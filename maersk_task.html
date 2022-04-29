@@ -1,0 +1,129 @@
+<html>
+
+<style>
+header{
+  background: grey;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+}
+
+footer{
+  background: lightgrey;
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+button{
+  border: none;
+  padding: 35px;
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+.firstSection > button, .secondSection > button, .thirdSection > button {
+  display: inline;
+}
+
+.cardSection, .btnSection {
+  display: inline-block;
+}
+
+.btnSection {
+  float: right;
+}
+
+input {
+  width: 100px;
+  height: 30px;
+  display: block;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+@media screen  and (min-width: 600px) and (max-width: 768px) {
+  .firstSection > button, .secondSection > button, .thirdSection > button {
+    display: block;
+    position: relative;
+    top: 100px;
+  }
+  button {width: 800px;}
+  .btnSection {
+    position: absolute;
+    top: 60px;
+    left: 250px;
+  }
+
+  footer {
+    position: relative;
+    top: 100px;
+  }
+}
+</style>
+
+<head>
+<script type="text/javascript">
+var btnArr = [];
+var newArr = [1,2,3,4,5,6,7,8,9];
+
+function shuffleAndSort(event) {
+	newArr = [];
+  btnArr = [];
+  while (btnArr.length < 10) {
+  	var r = Math.floor(Math.random() * 10);
+    if (btnArr.indexOf(r) === -1) {
+    	btnArr.push(r);
+    }
+  }
+  const index = btnArr.indexOf(0);
+  if(index > -1) {
+  	btnArr.splice(index, 1);
+  }
+  if(event === 'shuffle') {
+  newArr = btnArr;
+  newArr.forEach((item,index)=>{
+   document.getElementById(index + 1).innerHTML = newArr[index];
+  })
+  } else {
+  newArr = btnArr.sort();
+  newArr.forEach((item,index)=>{
+   document.getElementById(index + 1).innerHTML = newArr[index];
+  })
+  }
+}
+</script>
+</head>
+
+<body>
+<header>Shuffle and Sort</header>
+<div class="container">
+<div class="cardSection">
+<div class="firstSection">
+<button id="1"style="background: #000000">1</button>
+<button id="2" style="background: #333333">2</button>
+<button id="3" style="background: #FFFFFF; color: black">3</button>
+</div>
+<div class="secondSection">
+<button id="4" style="background: #EFEFEF">4</button>
+<button id="5" style="background: #72C3DC">5</button>
+<button id="6" style="background: #2B8EAD">6</button>
+</div>
+<div class="thirdSection">
+<button id="7" style="background: #6F98A8">7</button>
+<button id='9' style="background: #2F454E">8</button>
+<button id='8' style="background: #BFBFBF">9</button>
+</div>
+</div>
+
+<div class="btnSection">
+<input type="button" style="background: #2B8EAD" value="Shuffle" onclick="shuffleAndSort('shuffle')">
+<input type="button" style="background: #2B8EAD" value="Sort" onclick="shuffleAndSort('sort')">
+</div>
+</div>
+<footer>Shuffle and Sort by Manoj S K</footer>
+</body>
+
+</html>
